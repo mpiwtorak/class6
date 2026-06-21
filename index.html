@@ -163,9 +163,9 @@ ul.ck li::before{content:'✓';position:absolute;left:0;color:var(--green);font-
 <div class="hero">
   <div class="hero-tag">Alberta Class 6 · Official Exam Prep</div>
   <h1>MOTORCYCLE<br><span>EXAM PREP</span></h1>
-  <p class="hero-sub">Complete Study Guide + 96-Question Practice Quiz · Based on the Official Alberta Rider's Guide</p>
+  <p class="hero-sub">Complete Study Guide + 126-Question Practice Quiz · Based on the Official Alberta Rider's Guide</p>
   <div class="pills">
-    <div class="pill hi">96 Real Questions</div>
+    <div class="pill hi">126 Real Questions</div>
     <div class="pill">8 Study Topics</div>
     <div class="pill">Quiz + Study Mode</div>
     <div class="pill">Free · No Login</div>
@@ -193,6 +193,7 @@ ul.ck li::before{content:'✓';position:absolute;left:0;color:var(--green);font-
     <div class="stab" onclick="showTab('traffic',this)">🛣️ Traffic</div>
     <div class="stab" onclick="showTab('emergency',this)">🚨 Emergencies</div>
     <div class="stab" onclick="showTab('passenger',this)">👥 Passengers</div>
+    <div class="stab" onclick="showTab('signs',this)">🚦 Road Signs</div>
     <div class="stab" onclick="showTab('qbank',this)">❓ All Q&amp;As</div>
   </div>
 
@@ -432,17 +433,98 @@ ul.ck li::before{content:'✓';position:absolute;left:0;color:var(--green);font-
     <ul class="ck"><li>Best: saddle bags or tank bags designed for motorcycles</li><li>Load saddle bags with approximately equal weight on each side</li><li>Use elastic bungee cords or nets — check load regularly during the trip</li><li>Do NOT attach cargo to handlebars or front fender</li></ul>
   </div>
 
+  <!-- ROAD SIGNS -->
+  <div class="panel" id="tab-signs">
+    <div class="sh">Alberta Road Signs — Quick Reference</div>
+    <div class="wb"><strong>⚠ Exam tip:</strong> Road signs are tested on the Class 6 knowledge exam. Know signs by shape and colour — you don't need to read the text to identify many of them.</div>
+
+    <div class="sh">Sign Shapes — What They Mean</div>
+    <div class="tw"><table>
+      <tr><th>Shape</th><th>Meaning</th><th>Examples</th></tr>
+      <tr><td>Octagon (8 sides)</td><td>STOP — always red</td><td>Stop sign</td></tr>
+      <tr><td>Triangle (point down)</td><td>YIELD — white with red border</td><td>Yield sign</td></tr>
+      <tr><td>Diamond</td><td>Warning — yellow or orange</td><td>Curves, hills, bumps, animals, construction</td></tr>
+      <tr><td>Pentagon (5 sides)</td><td>School zone — fluorescent yellow-green</td><td>School area, school crosswalk</td></tr>
+      <tr><td>Circle</td><td>Railway crossing warning OR regulatory prohibition</td><td>Railway crossing (circular), Do Not Enter</td></tr>
+      <tr><td>Rectangle (vertical)</td><td>Regulatory — rules you must follow</td><td>Speed limit, no parking, lane use</td></tr>
+      <tr><td>Rectangle (horizontal)</td><td>Guide / information</td><td>Destinations, highway numbers, distances</td></tr>
+    </table></div>
+
+    <div class="sh">Sign Colours — What They Mean <span class="bdg">HOT</span></div>
+    <div class="tw"><table>
+      <tr><th>Colour</th><th>Meaning</th><th>Examples</th></tr>
+      <tr><td>Red</td><td>Stop, prohibition, do not</td><td>Stop, Yield, Do Not Enter, No Parking, No U-Turn</td></tr>
+      <tr><td>Yellow</td><td>Warning — hazard or caution ahead</td><td>Curves, hills, construction, bumps, animals</td></tr>
+      <tr><td>Orange</td><td>Construction / temporary conditions</td><td>Road work zones, temporary speed limits</td></tr>
+      <tr><td>Fluorescent Yellow-Green</td><td>School and pedestrian zones</td><td>School zone, pedestrian crossing</td></tr>
+      <tr><td>Green</td><td>Direction, destination, distance</td><td>Highway route signs, distance signs</td></tr>
+      <tr><td>Blue</td><td>Services / information</td><td>Hospital (H), gas, food, parking, rest areas</td></tr>
+      <tr><td>White</td><td>Regulatory — rules of the road</td><td>Speed limit, lane use, one-way</td></tr>
+      <tr><td>Brown</td><td>Recreation and cultural interest</td><td>Parks, campsites, tourist attractions</td></tr>
+      <tr><td>Orange triangle</td><td>Slow-moving vehicle (under 40 km/h)</td><td>Farm equipment, road maintenance vehicles</td></tr>
+    </table></div>
+
+    <div class="sh">Common Warning Signs (Yellow Diamond)</div>
+    <div class="tw"><table>
+      <tr><th>Sign Description</th><th>Meaning</th></tr>
+      <tr><td>Curved arrow (one bend)</td><td>Sharp turn or bend in the road ahead</td></tr>
+      <tr><td>Wavy line / S-curve arrows</td><td>Winding road ahead</td></tr>
+      <tr><td>Arrow splitting two ways (Y)</td><td>Divider ahead — keep right</td></tr>
+      <tr><td>Two opposing arrows (up/down)</td><td>Two-way traffic</td></tr>
+      <tr><td>Arrow curving with dotted merge line</td><td>Merging traffic ahead from side road</td></tr>
+      <tr><td>Bump symbol</td><td>Bump or uneven pavement ahead</td></tr>
+      <tr><td>Steep downward arrow</td><td>Steep hill ahead — use lower gear</td></tr>
+      <tr><td>Worker with shovel</td><td>Construction zone — workers present</td></tr>
+      <tr><td>Person walking</td><td>Pedestrian crossing ahead</td></tr>
+      <tr><td>Bicycle</td><td>Bicycle crossing ahead</td></tr>
+      <tr><td>Snowmobile</td><td>Motorized snow vehicle crossing</td></tr>
+      <tr><td>Animal silhouette</td><td>Animal crossing in this area</td></tr>
+    </table></div>
+
+    <div class="sh">Common Regulatory Signs</div>
+    <div class="tw"><table>
+      <tr><th>Sign</th><th>Meaning</th><th>What to Do</th></tr>
+      <tr><td>Red octagon — STOP</td><td>Mandatory stop</td><td>Come to a complete stop. Do not proceed until safe.</td></tr>
+      <tr><td>White triangle (point down) — YIELD</td><td>Give right-of-way</td><td>Slow down, stop if necessary. Give way to traffic on the road you are entering.</td></tr>
+      <tr><td>Red circle with white bar — DO NOT ENTER</td><td>No entry</td><td>Do not enter. Road is one-way going the other direction.</td></tr>
+      <tr><td>Red circle with P and slash</td><td>No parking</td><td>Parking is prohibited in this area.</td></tr>
+      <tr><td>Red circle with U-turn symbol and slash</td><td>No U-turn</td><td>U-turns are prohibited at this location.</td></tr>
+      <tr><td>Red circle with bicycle and slash</td><td>No bicycles</td><td>Bicycles are prohibited on this road.</td></tr>
+      <tr><td>Single arrow in lane</td><td>Lane use control</td><td>You must follow the direction shown. No other movements permitted.</td></tr>
+    </table></div>
+
+    <div class="sh">School and Playground Signs</div>
+    <ul class="ck">
+      <li>Pentagon shape (5 sides) = exclusive to school zones in Canada</li>
+      <li>Fluorescent yellow-green = highest visibility colour for pedestrian/school zones</li>
+      <li>School zone speed limits apply during school hours — obey posted times</li>
+      <li>Playground zone signs are rectangular, not pentagon-shaped</li>
+      <li>Watch for children at all times in school and playground zones</li>
+    </ul>
+
+    <div class="sh">Information and Service Signs</div>
+    <ul class="ck">
+      <li>Blue signs = services (hospital, gas, food, lodging, camping, parking)</li>
+      <li>Green signs = direction and route information</li>
+      <li>Brown signs = recreation, parks, and cultural attractions</li>
+      <li>White H on blue = hospital ahead (emergency services)</li>
+      <li>Trans-Canada highway symbol = highway route marker</li>
+    </ul>
+  </div>
+
+
   <!-- Q&A BANK -->
   <div class="panel" id="tab-qbank">
     <div class="sh">120 Real Exam Questions — Click to Reveal Answer</div>
     <div class="fbar">
-      <button class="fbtn on" onclick="filterQ('all',this)">All (96)</button>
+      <button class="fbtn on" onclick="filterQ('all',this)">All (126)</button>
       <button class="fbtn" onclick="filterQ('Licensing',this)">Licensing (20)</button>
       <button class="fbtn" onclick="filterQ('Gear & Safety',this)">Gear (15)</button>
       <button class="fbtn" onclick="filterQ('Riding Basics',this)">Riding (18)</button>
       <button class="fbtn" onclick="filterQ('Managing Traffic',this)">Traffic (15)</button>
       <button class="fbtn" onclick="filterQ('Emergencies',this)">Emergencies (13)</button>
       <button class="fbtn" onclick="filterQ('Passengers & Cargo',this)">Passengers (15)</button>
+      <button class="fbtn" onclick="filterQ('Road Signs',this)">Road Signs (30)</button>
     </div>
     <div id="qaList"></div>
   </div>
@@ -456,9 +538,9 @@ ul.ck li::before{content:'✓';position:absolute;left:0;color:var(--green);font-
   <!-- Start Screen -->
   <div class="qz-start" id="qz-start">
     <h2>Practice Quiz</h2>
-    <p>Select the topics you want to practice, or keep all selected for the full 96-question quiz.</p>
+    <p>Select the topics you want to practice, or keep all selected for the full 126-question quiz.</p>
     <div class="chips" id="qz-chips"></div>
-    <div class="qcount"><span id="qz-count">96</span> questions selected</div>
+    <div class="qcount"><span id="qz-count">126</span> questions selected</div>
     <button class="btn-go" onclick="beginQuiz()">Start Quiz</button>
   </div>
 
@@ -598,9 +680,40 @@ const QS=[
 {cat:'Passengers & Cargo',q:'A passenger is legally permitted only if the motorcycle has:',opts:['A windshield','A storage compartment','A displacement over 500 cc','A seat specifically designed to carry an extra person'],a:3,note:'Also needs hand grips and foot pegs for the passenger.'},
 {cat:'Passengers & Cargo',q:'When carrying a passenger for the very first time, where should you start?',opts:['Only at night when traffic is lighter','With high-speed freeway riding','Immediately on busy highways','At slow speeds in a traffic-free area, then gradually progress to light traffic'],a:3,note:'Communication and cooperation between operator and passenger are critical.'},
 {cat:'Passengers & Cargo',q:'Why should you avoid sudden acceleration when carrying a passenger?',opts:['It reduces stopping distance','It improves fuel economy','It cleans the engine','The passenger can lose balance and possibly come off the motorcycle'],a:3,note:'Warn the passenger before any sudden movements.'}
+,
+{cat:'Road Signs',q:'A yellow diamond-shaped sign shows a bump symbol. What does this sign mean?',opts:['Bridge or viaduct ahead','Bump or uneven pavement on the road ahead','Construction zone ahead: slow down','River ahead'],a:1,note:'Yellow diamond warning signs alert drivers to road hazards ahead. A bump symbol means uneven pavement.'},
+{cat:'Road Signs',q:'A red circle with a horizontal white bar means:',opts:['Railway crossing','Traffic circle ahead','Do not enter','Local traffic only'],a:2,note:'The red circle with white horizontal bar is the Do Not Enter sign — you must not enter the road in that direction.'},
+{cat:'Road Signs',q:'A sign showing a slow-moving vehicle (orange triangle) travelling less than 40 km/h means:',opts:['Yield right-of-way to vehicle ahead','Stop sign ahead','Slow-moving vehicle ahead: use caution','Dead-end street ahead'],a:2,note:'The orange triangle is the slow-moving vehicle emblem, displayed on farm equipment and other slow vehicles travelling under 40 km/h.'},
+{cat:'Road Signs',q:'A yellow diamond sign shows a straight arrow splitting into two lanes. What does this sign mean?',opts:['Divider ahead, keep right','Road turns right then left','Two-way traffic','Winding road ahead'],a:0,note:'This sign warns that a divider is ahead and you should keep right.'},
+{cat:'Road Signs',q:'A sign shows the silhouette of a person digging. What does this sign mean?',opts:['Pedestrian control sign','Flagman on duty ahead','Construction zone, people working','School area ahead'],a:2,note:'A sign showing a worker with a shovel indicates construction activity — workers are present ahead.'},
+{cat:'Road Signs',q:'A yellow pentagon-shaped sign with a walking figure means:',opts:['You are entering a school area','Watch for pedestrians','Children playing in residential area','You are entering a playground zone'],a:0,note:'The pentagon (five-sided) shape is used exclusively for school zone signs in Canada. It means you are entering a school area.'},
+{cat:'Road Signs',q:'A sign shows two arrows pointing in opposite directions (one up, one down). What does it indicate?',opts:['Merge ahead','Both lanes travel in the same direction','Two-way traffic','Divider ahead'],a:2,note:'Two opposing arrows indicate two-way traffic — vehicles travel in both directions on this road.'},
+{cat:'Road Signs',q:'A circular sign with a red border and an X with two Rs means:',opts:['Yield the right of way','Railway crossing ahead','Oncoming traffic must stop','School zone ahead'],a:1,note:'The circular red-and-white railway crossing sign warns of a railway crossing ahead.'},
+{cat:'Road Signs',q:'A yellow sign shows a bent arrow pointing sharply left or right. What does it mean?',opts:['Winding road ahead','Dead end','Sharp turn or bend in the road ahead','Free flow'],a:2,note:'A bent or curved arrow on a yellow diamond sign warns of a sharp turn or bend in the road ahead.'},
+{cat:'Road Signs',q:'A sign shows a hill with a steep grade. What should you do?',opts:['Increase your speed to maintain momentum','Be prepared to use a lower gear if necessary','Stop before descending','Proceed with caution — yield to uphill traffic'],a:1,note:'A steep hill sign warns riders to shift to a lower gear for engine braking and to control speed on the descent.'},
+{cat:'Road Signs',q:'A red octagonal sign means:',opts:['Bump 150 meters ahead','Stop only if other vehicles are approaching','Come to a complete stop and do not proceed until safe','Stop 150 meters ahead'],a:2,note:'The red octagon is the STOP sign — you must come to a complete stop and not proceed until it is safe to do so.'},
+{cat:'Road Signs',q:'A sign with two vertical white lines on a black background and red text "STOP" between them means:',opts:['No stopping in the area between the signs','Approaching vehicles must stop then may proceed with caution','No entry into intersection','There are no stop signs in that direction'],a:1,note:'This regulatory sign indicates that approaching vehicles must stop, then may proceed with caution when safe.'},
+{cat:'Road Signs',q:'A yellow diamond sign shows a divided highway with a gap in the centre barrier. This means:',opts:['Divided highway begins','Narrow bridge ahead','Road under construction','Divided highway ends'],a:3,note:'When the centre barrier in the sign has a gap, it means the divided highway is ending ahead — lanes merge into two-way traffic.'},
+{cat:'Road Signs',q:'A yellow sign showing a T-intersection means:',opts:['Road narrows both sides','Hidden intersection ahead','You are approaching a T-intersection — the road ends ahead','One-way street ahead'],a:2,note:'A T-intersection sign warns that the road you are on ends ahead. You must turn left or right.'},
+{cat:'Road Signs',q:'A yellow diamond sign shows a curved road with two bends. This means:',opts:['Sharp bend in the road','Winding road ahead','Slippery when wet','Bumpy road ahead'],a:1,note:'Multiple curves shown on a yellow diamond sign indicate a winding road ahead — reduce speed and ride carefully.'},
+{cat:'Road Signs',q:'A sign with a red circle and a diagonal line through a symbol means:',opts:['Warning of hazard','Regulatory — that action is prohibited','Informational — service available','Construction zone'],a:1,note:'A red circle with a diagonal line through a symbol is always a regulatory prohibition sign — that specific action is not allowed.'},
+{cat:'Road Signs',q:'A white rectangular sign with a black arrow pointing one direction means:',opts:['Right turn lane','Danger ahead: veer to the right','This lane must travel in the direction of the arrow','No parking from arrows to corner'],a:2,note:'A lane use sign with a single arrow means you must follow the indicated direction — no other movements are permitted from that lane.'},
+{cat:'Road Signs',q:'A fluorescent yellow-green pentagonal sign shows a walking adult and child. What does it mean?',opts:['Pedestrian crossing ahead','Children playing in residential area','You are entering a school zone — watch for children','Playground area'],a:2,note:'The fluorescent yellow-green pentagon with adult and child figures is the school zone sign. Slow to school zone speed limits.'},
+{cat:'Road Signs',q:'A sign reading "YIELD" in a downward-pointing triangle means:',opts:['Stop completely and wait for a green light','Slow down and give right-of-way to traffic on the road you are entering','Road is closed ahead','Oncoming traffic must yield to you'],a:1,note:'The yield sign means slow down, stop if necessary, and give the right-of-way to traffic already on the road you are entering.'},
+{cat:'Road Signs',q:'A blue rectangular sign with a white "H" means:',opts:['Hazardous road ahead','Highway begins here','Hospital nearby — emergency services available','Hiking trail ahead'],a:2,note:'Blue signs with a white H indicate a hospital is nearby. Blue signs in general indicate services available to motorists.'},
+{cat:'Road Signs',q:'A sign showing a bicycle with a line through it means:',opts:['Bicycle parking not permitted','Bicycle crossing ahead','Bicycles not permitted on this road','Do not pass bicycles'],a:2,note:'A bicycle symbol with a red diagonal line through it is a prohibition sign — bicycles are not permitted on this roadway.'},
+{cat:'Road Signs',q:'A sign showing a snowmobile means:',opts:['Caution: animal crossing','Snowmobile crossing area','No snowmobiles permitted','Motorized snow vehicles crossing'],a:3,note:'A snowmobile crossing sign warns motorists that motorized snow vehicles may be crossing the road in this area.'},
+{cat:'Road Signs',q:'A "No U-Turn" sign (U-shape with red circle and line through it) means:',opts:['Left turn prohibited','No U-turn permitted at this location','Road slippery when wet','Right turn prohibited'],a:1,note:'The no U-turn sign is a regulatory sign. Making a U-turn at this location is prohibited.'},
+{cat:'Road Signs',q:'A sign showing "SCHOOL BUS STOP AHEAD" with flashing yellow lights means:',opts:['Stop at traffic light ahead when yellow lights are flashing','Traffic control signals ahead','School bus stop ahead — be prepared to stop','No traffic light ahead'],a:2,note:'When you see a school bus stop ahead sign with flashing lights, be prepared to stop completely when the bus is loading or unloading children.'},
+{cat:'Road Signs',q:'A sign shows a "P" with a red circle and diagonal line through it. What does it mean?',opts:['Parking permitted','No parking in this area','Restricted parking available','Free parking available'],a:1,note:'A P with a red prohibition symbol means no parking is permitted in this area.'},
+{cat:'Road Signs',q:'A blue sign with a white "P" means:',opts:['No parking','Uneven pavement','Parking is permitted here','Slow-moving vehicles'],a:2,note:'A blue sign with a white P indicates that parking is permitted in this location.'},
+{cat:'Road Signs',q:'A sign shows a truck on a road. What does it most likely indicate?',opts:['Dangerous goods route','Passing allowed','Truck route — this road is designated for heavy vehicles','Parking is permitted'],a:2,note:'A truck route sign designates a road as an approved route for commercial trucks and heavy vehicles.'},
+{cat:'Road Signs',q:'A yellow sign shows a right-curving arrow merging with a straight road. What does it mean?',opts:['Road curves left','Hidden road','Roadway ahead where joining traffic merges from the right','Free flow'],a:2,note:'A merge sign warns that another road joins from the side ahead. Adjust your speed and position to safely merge with joining traffic.'},
+{cat:'Road Signs',q:'A green rectangular sign with white text and a route number means:',opts:['Construction zone ahead','Destination and highway route information','Railway crossing ahead','Speed limit advisory'],a:1,note:'Green rectangular signs provide destination and highway route information — they guide you toward cities, highways, and distances.'},
+{cat:'Road Signs',q:'A yellow diamond sign shows an arrow curving left with a dotted line showing a merging road. What does this mean?',opts:['Do not turn left','Road curves left — keep left','Left turn only','Roundabout ahead'],a:1,note:'A yellow warning sign with a curve arrow and dotted merge line warns that the road curves left and merging traffic joins from the right.'}
 ];
 
-const CATS=['Licensing','Gear & Safety','Riding Basics','Managing Traffic','Emergencies','Passengers & Cargo'];
+const CATS=['Licensing','Gear & Safety','Riding Basics','Managing Traffic','Emergencies','Passengers & Cargo','Road Signs'];
 
 
 // ── INIT: hide quiz sub-panels on load ──
