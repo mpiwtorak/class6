@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alberta Class 6 Motorcycle Exam Prep</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+  :root {
+    --asphalt:#1a1c20;--road:#2c2f35;--amber:#f5a623;--white:#f0ede8;
+    --muted:#9099a8;--pass:#3ecf8e;--warn:#ff6b35;--card:#23262d;--border:#363b44;
+    --fail:#e04a4a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--asphalt);color:var(--white);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6;min-height:100vh}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#111316,#2c2f35);border-bottom:3px solid var(--amber);padding:28px 20px 20px;text-align:center}
+  .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;color:var(--amber);text-transform:uppercase;margin-bottom:6px}
+  .hero h1{font-family:'Barlow Condensed',sans-serif;font-size:38px;font-weight:800;line-height:1;color:var(--white)}
+  .hero h1 span{color:var(--amber)}
+  .hero-sub{color:var(--muted);font-size:13px;margin-top:8px}
+  .pill-row{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:12px}
+  .pill{background:var(--road);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--muted)}
+  .pill.amber{border-color:var(--amber);color:var(--amber)}
+
+  /* MODE TOGGLE */
+  .mode-bar{display:flex;background:var(--road);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100}
+  .mode-btn{flex:1;padding:12px;font-size:13px;font-weight:700;letter-spacing:0.5px;text-align:center;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none}
+  .mode-btn.active{color:var(--amber);border-bottom-color:var(--amber)}
+  .mode-btn:hover{color:var(--white)}
+
+  /* TABS */
+  .tabs{display:flex;overflow-x:auto;background:var(--road);border-bottom:1px solid var(--border);scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;padding:10px 14px;font-size:11px;font-weight:600;letter-spacing:0.5px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s}
+  .tab.active{color:var(--amber);border-bottom-color:var(--amber)}
+  .tab:hover{color:var(--white)}
+
+  .content{display:none;padding:18px 16px;max-width:740px;margin:0 auto}
+  .content.active{display:block}
+
+  /* TYPOGRAPHY */
+  .sec-head{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--white);border-left:3px solid var(--amber);padding-left:10px;margin:20px 0 11px}
+  .sec-head:first-child{margin-top:0}
+
+  .fact-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+  .fact-box .label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+  .fact-box p{font-size:13px;line-height:1.5}
+
+  .warn-box{background:rgba(255,107,53,.1);border:1px solid rgba(255,107,53,.35);border-radius:8px;padding:10px 14px;margin:10px 0;font-size:13px;line-height:1.5}
+  .warn-box strong{color:var(--warn)}
+
+  .t-wrap{overflow-x:auto;margin:10px 0}
+  table{width:100%;border-collapse:collapse;font-size:12px;min-width:300px}
+  th{background:var(--road);color:var(--amber);font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;text-align:left;border-bottom:2px solid var(--border)}
+  td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--white);vertical-align:top;line-height:1.4}
+  tr:last-child td{border-bottom:none}
+  tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+
+  ul.cl{list-style:none;margin:6px 0}
+  ul.cl li{padding:5px 0 5px 24px;position:relative;font-size:13px;border-bottom:1px solid var(--border);line-height:1.4}
+  ul.cl li:last-child{border-bottom:none}
+  ul.cl li::before{content:'✓';position:absolute;left:0;color:var(--pass);font-weight:700}
+
+  .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;border-radius:4px;padding:2px 6px;margin-left:5px;vertical-align:middle}
+  .badge-hot{background:var(--warn);color:#fff}
+  .badge-new{background:var(--pass);color:#111}
+
+  .ref-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:8px;margin:12px 0}
+  .ref-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px}
+  .ref-card .rc-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:5px;font-weight:600}
+  .ref-card .rc-val{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;line-height:1.1}
+  .ref-card p{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.3}
+
+  /* QUIZ */
+  #quizPanel{display:none;max-width:740px;margin:0 auto}
+  .quiz-header{background:var(--road);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:58px;z-index:10}
+  .quiz-prog{font-size:12px;color:var(--muted)}
+  .quiz-prog span{color:var(--amber);font-weight:700}
+  .quiz-score-live{font-size:13px;font-weight:700}
+
+  .quiz-body{padding:18px 16px}
+  .quiz-cat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:8px}
+  .quiz-q{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:16px;color:var(--white)}
+  .quiz-opts{display:flex;flex-direction:column;gap:9px}
+
+  .opt{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px 15px;cursor:pointer;font-size:13px;color:var(--white);transition:all .15s;line-height:1.4;text-align:left;width:100%}
+  .opt:hover{border-color:var(--amber);background:rgba(245,166,35,.06)}
+  .opt.correct{background:rgba(62,207,142,.12);border-color:var(--pass);color:var(--pass);cursor:default}
+  .opt.wrong{background:rgba(224,74,74,.1);border-color:var(--fail);color:var(--fail);cursor:default}
+  .opt.reveal{background:rgba(62,207,142,.06);border-color:rgba(62,207,142,.4);cursor:default}
+  .opt.disabled{cursor:default;pointer-events:none}
+
+  .quiz-feedback{margin-top:14px;background:var(--card);border-radius:8px;padding:12px 14px;font-size:13px;display:none;border-left:3px solid var(--pass);line-height:1.5}
+  .quiz-feedback.wrong{border-left-color:var(--fail)}
+  .quiz-feedback .fb-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+  .quiz-feedback.correct .fb-label{color:var(--pass)}
+  .quiz-feedback.wrong .fb-label{color:var(--fail)}
+
+  .quiz-nav{margin-top:16px;display:flex;gap:9px;justify-content:flex-end}
+  .btn{padding:10px 20px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer;border:none;letter-spacing:0.5px;transition:all .15s;font-family:'Inter',sans-serif}
+  .btn-amber{background:var(--amber);color:#111}
+  .btn-amber:hover{background:#e09510}
+  .btn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
+  .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+  .quiz-result{padding:32px 16px;text-align:center;display:none}
+  .quiz-result h2{font-family:'Barlow Condensed',sans-serif;font-size:40px;font-weight:800;margin-bottom:8px}
+  .result-score{font-size:60px;font-weight:800;font-family:'Barlow Condensed',sans-serif;line-height:1}
+  .quiz-result p{color:var(--muted);margin:12px 0 22px;font-size:14px}
+  .quiz-cat-scores{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;text-align:left}
+  .cat-score-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 13px}
+  .cat-score-card .cs-name{font-size:11px;color:var(--muted);margin-bottom:4px}
+  .cat-score-card .cs-val{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700}
+
+  .filter-bar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .filter-btn{background:var(--road);border:1px solid var(--border);border-radius:20px;padding:5px 13px;font-size:11px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+  .filter-btn.active{border-color:var(--amber);color:var(--amber)}
+  .filter-btn:hover{color:var(--white)}
+
+  /* Q&A LIST */
+  .qa{background:var(--card);border:1px solid var(--border);border-radius:8px;margin-bottom:10px;overflow:hidden}
+  .qa-q{padding:12px 14px;font-weight:600;font-size:13px;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;line-height:1.4}
+  .qa-q:hover{background:rgba(245,166,35,.06)}
+  .qa-arrow{flex:0 0 auto;color:var(--amber);font-size:16px;transition:transform .2s;line-height:1;margin-top:1px}
+  .qa.open .qa-arrow{transform:rotate(90deg)}
+  .qa-a{display:none;padding:0 14px 12px;border-top:1px solid var(--border);padding-top:10px}
+  .qa.open .qa-a{display:block}
+  .qa-a .ans{background:rgba(62,207,142,.08);border-left:3px solid var(--pass);border-radius:4px;padding:8px 10px;font-size:13px;line-height:1.5}
+  .qa-a .note{font-size:11px;color:var(--muted);margin-top:6px;line-height:1.4}
+
+  /* FOOTER */
+  .footer{text-align:center;padding:24px 16px;color:var(--muted);font-size:11px;border-top:1px solid var(--border);margin-top:10px;line-height:1.6}
+  .footer strong{color:var(--amber)}
+
+  /* RESPONSIVE */
+  @media(max-width:480px){
+    .hero h1{font-size:30px}
+    .quiz-cat-scores{grid-template-columns:1fr}
+    .ref-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">Alberta Class 6 · Official Exam Prep</div>
+  <h1>MOTORCYCLE<br><span>EXAM PREP</span></h1>
+  <p class="hero-sub">Study Guide + 120-Question Practice Quiz · Based on the Official Alberta Rider's Guide & drivingtest.ca</p>
+  <div class="pill-row">
+    <div class="pill amber">120 Real Questions</div>
+    <div class="pill">9 Topic Chapters</div>
+    <div class="pill">Quiz + Study Mode</div>
+    <div class="pill">Free · No Login</div>
+  </div>
+</div>
+
+<div class="mode-bar">
+  <button class="mode-btn active" onclick="setMode('study')">📚 Study Mode</button>
+  <button class="mode-btn" onclick="setMode('quiz')">🎯 Quiz Mode</button>
+</div>
+
+<!-- ===================== STUDY MODE ===================== -->
+<div id="studyPanel">
+  <div class="tabs" id="tabBar">
+    <div class="tab active" onclick="showTab('numbers',this)">🔢 Key Numbers</div>
+    <div class="tab" onclick="showTab('licensing',this)">🪪 Licensing</div>
+    <div class="tab" onclick="showTab('gear',this)">🪖 Gear</div>
+    <div class="tab" onclick="showTab('pretip',this)">🔧 Pre-Trip</div>
+    <div class="tab" onclick="showTab('riding',this)">🏍️ Riding</div>
+    <div class="tab" onclick="showTab('traffic',this)">🛣️ Traffic</div>
+    <div class="tab" onclick="showTab('emergency',this)">🚨 Emergencies</div>
+    <div class="tab" onclick="showTab('passenger',this)">👥 Passengers</div>
+    <div class="tab" onclick="showTab('qbank',this)">❓ All Q&amp;As</div>
+  </div>
+
+  <!-- KEY NUMBERS -->
+  <div class="content active" id="tab-numbers">
+    <div class="sec-head">Must-Memorize Numbers</div>
+    <div class="ref-grid">
+      <div class="ref-card"><div class="rc-label">Test Questions</div><div class="rc-val">30</div><p>Multiple choice, computer-based at registry</p></div>
+      <div class="ref-card"><div class="rc-label">Road Test</div><div class="rc-val">~60 min</div><p>3 routine stops regardless of errors</p></div>
+      <div class="ref-card"><div class="rc-label">Min Age: Motorcycle</div><div class="rc-val">16 yrs</div><p>+ valid licence + supervisor</p></div>
+      <div class="ref-card"><div class="rc-label">Min Age: Moped</div><div class="rc-val">14 yrs</div><p>Any class 1–7 licence required</p></div>
+      <div class="ref-card"><div class="rc-label">Min Age: Power Bike</div><div class="rc-val">12 yrs</div><p>No licence needed</p></div>
+      <div class="ref-card"><div class="rc-label">Demerit Suspension</div><div class="rc-val">8+</div><p>Privileges suspended at 8 or more demerits</p></div>
+      <div class="ref-card"><div class="rc-label">BAC Limit (GDL)</div><div class="rc-val">ZERO</div><p>Zero while on or seated on the bike</p></div>
+      <div class="ref-card"><div class="rc-label">Night Starts (Class 7)</div><div class="rc-val">Midnight or 1hr after sunset</div><p>Whichever is earlier</p></div>
+      <div class="ref-card"><div class="rc-label">Night Ends (Class 7)</div><div class="rc-val">5am or 1hr before sunrise</div><p>Whichever is later</p></div>
+      <div class="ref-card"><div class="rc-label">Moped Max Speed</div><div class="rc-val">70 km/h</div><p>Max engine: 50 cc displacement</p></div>
+      <div class="ref-card"><div class="rc-label">Power Bicycle Max</div><div class="rc-val">32 km/h</div><p>Max motor: 500 watts electric</p></div>
+      <div class="ref-card"><div class="rc-label">Following Distance</div><div class="rc-val">2–3 sec</div><p>3–4 sec in poor conditions or with passenger</p></div>
+    </div>
+    <div class="warn-box"><strong>⚠ Critical trap question:</strong> Passing the road test does NOT automatically change your licence. You MUST go to a registry agent office and pay the re-classing fee separately.</div>
+    <div class="sec-head">Key Details From the Real Exam</div>
+    <div class="t-wrap"><table>
+      <tr><th>Question Pattern</th><th>Answer</th></tr>
+      <tr><td>Following distance — ideal conditions</td><td>2–3 seconds minimum</td></tr>
+      <tr><td>Following distance — poor conditions</td><td>3–4 seconds</td></tr>
+      <tr><td>Following distance — with passenger</td><td>3–4 seconds</td></tr>
+      <tr><td>On right travel lane of multi-lane road, where to ride?</td><td>Left portion of your lane (left wheel track)</td></tr>
+      <tr><td>On a two-lane road (1 lane each direction), safest position?</td><td>Left portion of your lane (left wheel track)</td></tr>
+      <tr><td>Before crest of a hill on two-lane road?</td><td>Right portion — oncoming vehicle may be passing</td></tr>
+      <tr><td>When passing parked vehicles?</td><td>Left portion — avoid door zones</td></tr>
+      <tr><td>Why avoid lane centre generally?</td><td>Slippery and higher due to wear/oil accumulation</td></tr>
+      <tr><td>Lane filtering legal in Alberta?</td><td>NOT always legal — know current Alberta rules</td></tr>
+      <tr><td>Upshift — how many gears at once?</td><td>One gear at a time only</td></tr>
+      <tr><td>Downshift — how many gears at once?</td><td>Multiple gears allowed</td></tr>
+      <tr><td>Initiating a swerve RIGHT?</td><td>Push on the RIGHT hand grip (counter-steering)</td></tr>
+      <tr><td>Threshold braking = ?</td><td>Braking to the point JUST before wheels lock</td></tr>
+      <tr><td>If rear brake locks on pavement?</td><td>Immediately RELEASE the rear brake</td></tr>
+      <tr><td>If rear locks on loose surface (gravel/sand)?</td><td>May keep it locked — releasing could cause worse skid</td></tr>
+      <tr><td>If front wheel locks?</td><td>Release hand brake just enough to unlock, then reapply gradually</td></tr>
+      <tr><td>Throttle stuck open?</td><td>Squeeze clutch AND use engine kill switch simultaneously</td></tr>
+      <tr><td>When braking, weight shifts…</td><td>Forward — increasing front wheel braking force</td></tr>
+      <tr><td>Oil colour: good vs. needs changing?</td><td>Yellow = good; Dark/black = needs changing</td></tr>
+    </table></div>
+  </div>
+
+  <!-- LICENSING -->
+  <div class="content" id="tab-licensing">
+    <div class="sec-head">Qualifying to Ride</div>
+    <ul class="cl">
+      <li>Be at least 16 years old</li>
+      <li>Hold a valid Alberta driver's licence (any class)</li>
+      <li>Have a supervisor at all times until Class 6 road test is passed</li>
+    </ul>
+    <div class="sec-head">Supervisor Requirements</div>
+    <ul class="cl">
+      <li>Must hold a valid FULL Class 6 licence — not GDL</li>
+      <li>Must provide supervision by: sitting on your motorcycle, following on another motorcycle, or following in a vehicle</li>
+    </ul>
+    <div class="warn-box"><strong>⚠ Exam trap:</strong> A Class 5-GDL rider CANNOT supervise a learner. Only a full, non-GDL Class 6 holder qualifies.</div>
+    <div class="sec-head">Class 7 Learner Restrictions <span class="badge badge-hot">HOT</span></div>
+    <ul class="cl">
+      <li>NO night riding — midnight or 1hr after sunset → 5am or 1hr before sunrise</li>
+      <li>Zero BAC AND zero drug level while seated on or riding</li>
+      <li>Fewer than 8 demerit points</li>
+      <li>Must have supervising rider at all times</li>
+    </ul>
+    <div class="sec-head">Class 5-GDL Restrictions (when on a motorcycle)</div>
+    <ul class="cl">
+      <li>Zero BAC and drug level while on motorcycle</li>
+      <li>CANNOT supervise another learner rider</li>
+      <li>Fewer than 8 demerit points</li>
+      <li>No nighttime restriction (only Class 7 has this)</li>
+    </ul>
+    <div class="sec-head">After Passing the Road Test</div>
+    <div class="fact-box"><div class="label">⚠ Critical Step — Do Not Forget</div><p>You must go to a registry agent office and pay a fee to re-class your licence. Passing the road test result alone does NOT change your licence class.</p></div>
+    <div class="fact-box"><div class="label">Class 7 who passed Class 6 road test</div><p>Receives a Class 6-GDL licence. Stays in 2-year probationary stage. Must complete an advanced road test to fully exit the GDL program.</p></div>
+    <div class="sec-head">Knowledge Test</div>
+    <ul class="cl">
+      <li>30 questions — rules, signs, safety, licensing</li>
+      <li>Based on the Rider's Guide AND the Driver's Guide</li>
+      <li>Taken at most Alberta registry agent offices on a computer</li>
+      <li>Must purchase a test permit for EACH attempt</li>
+      <li>Must PASS the knowledge test before the road test</li>
+    </ul>
+    <div class="sec-head">Road Test</div>
+    <ul class="cl">
+      <li>Approximately 60 minutes long</li>
+      <li>You must provide your own motorcycle with valid insurance and registration</li>
+      <li>Examiner follows you in a vehicle and communicates via one-way radio</li>
+      <li>3 routine curb stops during the test — regardless of errors</li>
+      <li>If motorcycle is not mechanically safe, examiner will NOT conduct the test</li>
+      <li>Includes: equipment check, turns, intersections, balance, road position, speed control</li>
+    </ul>
+    <div class="sec-head">Vehicle Definitions</div>
+    <div class="t-wrap"><table>
+      <tr><th>Vehicle</th><th>Power</th><th>Max Speed</th><th>Min Age</th><th>Licence</th></tr>
+      <tr><td>Motorcycle</td><td>Any engine/motor, ≥55 kg</td><td>N/A</td><td>16</td><td>Class 6</td></tr>
+      <tr><td>Moped (LSM)</td><td>≤50 cc or electric</td><td>70 km/h</td><td>14</td><td>Class 1–7</td></tr>
+      <tr><td>Power Bicycle</td><td>Electric ≤500 watts</td><td>32 km/h</td><td>12</td><td>None required</td></tr>
+    </table></div>
+  </div>
+
+  <!-- GEAR -->
+  <div class="content" id="tab-gear">
+    <div class="sec-head">Helmet — Mandatory for ALL Riders</div>
+    <div class="fact-box"><div class="label">4 Approved Standards — Memorize All</div><p><strong>CSA</strong> (Canadian Standards Association) &nbsp;·&nbsp; <strong>DOT</strong> (U.S. Dept of Transportation) &nbsp;·&nbsp; <strong>BSI</strong> (British Standards Institute) &nbsp;·&nbsp; <strong>SNELL</strong> (Snell Memorial Foundation)</p></div>
+    <div class="sec-head">Helmet Types <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>Type</th><th>Protects</th><th>Does NOT Protect</th><th>Rating</th></tr>
+      <tr><td>Full-face</td><td>Entire head, chin, face, skull base, weather</td><td>—</td><td>✓ Best / Recommended</td></tr>
+      <tr><td>Three-quarter (open face)</td><td>Top, sides, back, skull base, ears</td><td>Face and chin</td><td>Good — add face shield</td></tr>
+      <tr><td>Half (shorty)</td><td>Top of head only</td><td>Chin, skull base, face, weather</td><td>Least recommended</td></tr>
+    </table></div>
+    <div class="fact-box"><div class="label">Key Helmet Rules</div><p>Lighter colour = more visible to others. Try on for 5–10 min before buying. If removable without loosening chin strap = wrong fit or wrong size. Replace after any collision or hard impact. Never buy used. Never paint, alter, or use solvents on a helmet.</p></div>
+    <div class="sec-head">Eye &amp; Face Protection</div>
+    <ul class="cl">
+      <li>Must be motorcycle-specific, scratch-free, shatter-resistant, and secured firmly</li>
+      <li>Must give a clear view both forward and side-to-side</li>
+      <li>Must be large enough to fit over corrective glasses or sunglasses</li>
+      <li>TINTED protection must NOT be worn at night or in poor light — use clear shield only</li>
+      <li>A motorcycle windshield alone does NOT provide adequate face/eye protection</li>
+    </ul>
+    <div class="sec-head">Riding Gear</div>
+    <div class="t-wrap"><table>
+      <tr><th>Item</th><th>Best Material</th><th>Key Rules</th></tr>
+      <tr><td>Jacket &amp; Pants</td><td>Leather or sturdy synthetic designed for riding</td><td>Full coverage, layered, snug but allows movement. Denim = minimum protection only. Shorts/nylon = not recommended.</td></tr>
+      <tr><td>Boots</td><td>Leather or sturdy synthetic</td><td>Cover ankles, non-slip durable soles, short heels, laces tucked in</td></tr>
+      <tr><td>Gloves</td><td>Leather or durable material — no mitts</td><td>Cover wrists, overlap jacket sleeves. Thin enough to feel controls; thick enough for crash protection.</td></tr>
+      <tr><td>Earplugs</td><td>Any standard earplug</td><td>Especially on highways. Wind noise causes fatigue and permanent hearing loss. Helmet alone may not be enough.</td></tr>
+    </table></div>
+    <div class="sec-head">Weather Hazards</div>
+    <div class="t-wrap"><table>
+      <tr><th>Condition</th><th>What It Does to the Rider</th><th>Prevention</th></tr>
+      <tr><td>Hypothermia</td><td>Body loses heat → slowed reflexes and reduced concentration. Happens even in warm weather due to wind exposure.</td><td>Windproof jacket, insulated layers, motorcycle-specific heated gear</td></tr>
+      <tr><td>Hyperthermia</td><td>Body overheats in warm/hot weather</td><td>Ventilated gear, frequent water breaks, rest in shade. A proper jacket actually REDUCES this risk.</td></tr>
+      <tr><td>Dehydration</td><td>Wind rapidly dries moisture from exposed skin</td><td>Hydrate before and during the ride, frequent breaks</td></tr>
+    </table></div>
+  </div>
+
+  <!-- PRE-TRIP -->
+  <div class="content" id="tab-pretip">
+    <div class="warn-box"><strong>⚠ Exam hot spot:</strong> Tire, light, and brake problems have been found on motorcycles involved in fatal collisions. This section generates many exam questions.</div>
+    <div class="sec-head">Pre-Trip Inspection — By System <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>System</th><th>What to Check</th></tr>
+      <tr><td><strong>Tires</strong></td><td>Air pressure (match owner's manual), tread depth and wear, no objects in tread, no punctures, no cuts/bulges/cracks in sidewalls</td></tr>
+      <tr><td><strong>Wheels/Rims</strong></td><td>Wire spokes tight and complete, no cracks in rims, bearings lubricated, seals not leaking</td></tr>
+      <tr><td><strong>Lights</strong></td><td>Headlight (high AND low beam — must come on with engine running), tail light, brake light (activates with BOTH hand AND foot brake), all turn signals, reflectors clean and secure</td></tr>
+      <tr><td><strong>Fluids</strong></td><td>Oil level and colour (yellow = good; dark/black = needs changing), coolant level and hoses, fuel amount, brake fluid level, differential fluid. Check for leaks on the ground.</td></tr>
+      <tr><td><strong>Brakes</strong></td><td>Front and rear tested separately — motorcycle should not move when fully applied</td></tr>
+      <tr><td><strong>Clutch</strong></td><td>Cable moves freely and feels tight; hydraulic clutch fluid at proper level</td></tr>
+      <tr><td><strong>Throttle</strong></td><td>Moves freely and returns to closed position WITHOUT assistance</td></tr>
+      <tr><td><strong>Drive System</strong></td><td>Chain: lubrication and proper tension; Belt: wear and proper tension; Shaft: no oil leaks</td></tr>
+      <tr><td><strong>Battery &amp; Electrical</strong></td><td>Battery secure, terminals clean; horn works; engine cut-off switch stops engine; neutral light (green) works when in neutral; instrument lights work with key ON; hazard lights (if equipped) work; safety interlock switch on sidestand (if equipped)</td></tr>
+      <tr><td><strong>Mirrors</strong></td><td>Clean, properly adjusted (show edge of arm/shoulder), securely fastened</td></tr>
+      <tr><td><strong>Stands</strong></td><td>Sidestand and centre stand: no cracks or bends, retract and stay securely in place</td></tr>
+      <tr><td><strong>Licence Plate</strong></td><td>Mounted to rear fender, securely attached, clearly visible. Light working (if equipped).</td></tr>
+    </table></div>
+    <div class="sec-head">Mirror Adjustment</div>
+    <div class="fact-box"><div class="label">Properly adjusted = shows</div><p>The edge of your arm or shoulder in each mirror, plus as much of the lane behind and adjacent lanes as possible. Objects may be CLOSER than they appear. Never rely entirely on mirrors — always shoulder check when changing lanes.</p></div>
+    <div class="sec-head">Starting Sequence</div>
+    <ul class="cl">
+      <li>Release anti-theft lock (allows handlebars to steer freely)</li>
+      <li>Retract sidestand — ensure footing is secure</li>
+      <li>Adjust mirrors to show edge of your arm/shoulder</li>
+      <li>Ensure motorcycle is in NEUTRAL</li>
+      <li>Turn fuel switch to ON (if equipped)</li>
+      <li>Set engine cut-off switch to RUN</li>
+      <li>Open choke OR wait for fuel injection light to go OFF</li>
+      <li>Press starter until engine starts, then release</li>
+      <li>Warm engine, then slowly close choke (if equipped)</li>
+      <li>Ensure lights are on</li>
+      <li>Check mirrors, then shoulder check blind spot before moving</li>
+    </ul>
+  </div>
+
+  <!-- RIDING -->
+  <div class="content" id="tab-riding">
+    <div class="sec-head">Controls by Hand/Foot <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>Control</th><th>Hand/Foot</th><th>Function &amp; Key Rule</th></tr>
+      <tr><td>Throttle</td><td>Right hand</td><td>Engine power. Wrist bent slightly DOWN, no higher than flat — prevents over-throttle.</td></tr>
+      <tr><td>Front brake</td><td>Right hand</td><td>Front wheel braking — most stopping power</td></tr>
+      <tr><td>Clutch lever</td><td>Left hand</td><td>Engage/disengage engine power to rear wheel. Squeeze = disengaged.</td></tr>
+      <tr><td>Gear shift lever</td><td>Left foot</td><td>Upshift: foot UNDER lever (one gear at a time only). Downshift: foot ON TOP of lever (multiple gears allowed).</td></tr>
+      <tr><td>Rear brake</td><td>Right foot</td><td>Rear wheel braking</td></tr>
+    </table></div>
+    <div class="sec-head">Riding Position</div>
+    <ul class="cl">
+      <li>Arms: slightly bent and relaxed — not tense, not locked straight</li>
+      <li>Right wrist: slightly bent DOWN — prevents accidentally using too much throttle</li>
+      <li>Left hand: light but firm grip for easy clutch lever and switch access</li>
+      <li>Knees: pressed lightly against motorcycle to help maintain balance</li>
+      <li>Feet: FIRMLY on foot pegs AT ALL TIMES while moving — do not drag or point down</li>
+      <li>Eyes: looking WELL AHEAD in the direction of travel — never look down</li>
+    </ul>
+    <div class="sec-head">Friction Zone</div>
+    <div class="fact-box"><div class="label">Definition — Know This</div><p>The point during clutch release where engine power FIRST begins to transfer to the rear wheel. Must coordinate slow clutch release + gentle throttle application for a smooth start without stalling.</p></div>
+    <div class="sec-head">Gear Shifting Rules <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>Action</th><th>Rule</th></tr>
+      <tr><td>Upshifting</td><td>ONE gear at a time only. Foot UNDER lever. Roll throttle off, squeeze clutch, lift, release clutch + small throttle.</td></tr>
+      <tr><td>Downshifting</td><td>Can do MULTIPLE gears at once. Foot ON TOP of lever. Reduce speed to match gear before releasing clutch.</td></tr>
+      <tr><td>Downshift too fast for speed</td><td>Rear wheel may SKID</td></tr>
+      <tr><td>Curves/corners</td><td>Reduce speed and gear BEFORE entering — not during the curve</td></tr>
+      <tr><td>Too much throttle</td><td>Loss of control</td></tr>
+      <tr><td>Too little throttle</td><td>Engine stalls</td></tr>
+    </table></div>
+    <div class="sec-head">Uphill Starting</div>
+    <ul class="cl">
+      <li>Use the front brake (or rear brake) to hold the bike in place initially</li>
+      <li>In first gear, reach friction zone, then gradually release brake while adding throttle</li>
+      <li>If clutch is released too quickly: engine may stall OR front wheel may lift off the road</li>
+      <li>Once moving smoothly and clutch fully released: remove fingers from clutch lever, return to hand grip</li>
+    </ul>
+  </div>
+
+  <!-- TRAFFIC -->
+  <div class="content" id="tab-traffic">
+    <div class="sec-head">Lane Positioning — Full Picture <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>Situation</th><th>Recommended Position</th><th>Why</th></tr>
+      <tr><td>Two-lane road (1 lane each direction)</td><td>LEFT portion (left wheel track)</td><td>More visible to oncoming traffic and in mirrors; farther from right-side hazards</td></tr>
+      <tr><td>Right travel lane of multi-lane road</td><td>LEFT portion of that lane</td><td>Better visibility; maintains space from left-lane vehicles</td></tr>
+      <tr><td>Lane next to dividing yellow line</td><td>LEFT portion of that lane</td><td>Visibility and positioning</td></tr>
+      <tr><td>Before crest of a hill</td><td>RIGHT portion of your lane</td><td>Oncoming vehicle may be passing over the crest into your lane</td></tr>
+      <tr><td>Passing parked vehicles</td><td>LEFT portion of your lane</td><td>Avoid door zone openings and pedestrians stepping out</td></tr>
+      <tr><td>Near large vehicle turning right</td><td>Stay WELL BACK — never go between curb and vehicle</td><td>Large blind spots; serious squeeze/crush risk</td></tr>
+      <tr><td>Centre of lane — avoid generally</td><td>Avoid centre</td><td>Oil, grease, and debris accumulate there; can be slippery</td></tr>
+    </table></div>
+    <div class="sec-head">Following Distance <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>Condition</th><th>Minimum Distance</th></tr>
+      <tr><td>Ideal / good conditions</td><td>2–3 seconds</td></tr>
+      <tr><td>Poor conditions (weather, low light, heavy traffic)</td><td>3–4 seconds</td></tr>
+      <tr><td>With a passenger</td><td>3–4 seconds</td></tr>
+      <tr><td>Being tailgated by vehicle behind you</td><td>Reduce speed slightly to let tailgater pass; increase YOUR own forward following distance</td></tr>
+    </table></div>
+    <div class="sec-head">Lane Change Safe Sequence</div>
+    <ul class="cl">
+      <li>1. Check location is safe and legal</li>
+      <li>2. Check ahead and in mirrors</li>
+      <li>3. Shoulder check (clears blind spot)</li>
+      <li>4. Signal</li>
+      <li>5. Shoulder check AGAIN</li>
+      <li>6. Move only if safe</li>
+    </ul>
+    <div class="warn-box"><strong>⚠ Blind spots:</strong> If you cannot see the driver in their mirror, the driver likely cannot see YOU either. Always assume other drivers may NOT see you — ride proactively.</div>
+    <div class="sec-head">Space Cushion</div>
+    <ul class="cl">
+      <li>The distance between yourself and all surrounding vehicles — fully controlled by YOU</li>
+      <li>Gives time and space to avoid a hazard</li>
+      <li>Maintain cushion to sides: avoid riding beside vehicles or in their blind spots</li>
+      <li>Do NOT ride beside another motorcycle in the same lane (unsafe AND illegal)</li>
+      <li>Plan ahead — minimize lane changes and only change when necessary</li>
+    </ul>
+    <div class="sec-head">Group Riding Formations</div>
+    <div class="t-wrap"><table>
+      <tr><th>Situation</th><th>Formation</th></tr>
+      <tr><td>Normal highway / multi-lane</td><td>Staggered — riders alternate left and right positions in the lane</td></tr>
+      <tr><td>Narrow roads, sharp curves, low visibility</td><td>Single file</td></tr>
+      <tr><td>Following distance in group</td><td>2 seconds behind the rider directly ahead in YOUR lane position</td></tr>
+    </table></div>
+    <div class="sec-head">Signs a Parked Car May Pull Out</div>
+    <div class="fact-box"><div class="label">Watch For</div><p>Driver seated in the vehicle, signal lights flashing, brake lights lit, exhaust smoke visible, arm signal.</p></div>
+    <div class="sec-head">Distracted Riding — Traffic Safety Act Fines</div>
+    <ul class="cl">
+      <li>Hand-held cell phone — even hands-free is a distraction; must pull over to use</li>
+      <li>Texting or emailing while riding</li>
+      <li>Electronic devices (laptops, video games, cameras, GPS entry)</li>
+      <li>Reading, writing, sketching</li>
+      <li>Personal grooming</li>
+    </ul>
+  </div>
+
+  <!-- EMERGENCIES -->
+  <div class="content" id="tab-emergency">
+    <div class="sec-head">Emergency Braking — Threshold Braking <span class="badge badge-hot">HOT</span></div>
+    <div class="fact-box"><div class="label">Threshold Braking = </div><p>Braking to the point JUST BEFORE the wheels lock. Maximum stopping force without losing steering control. Use BOTH front and rear brakes simultaneously and firmly.</p></div>
+    <div class="sec-head">Brake + Swerve Rules <span class="badge badge-hot">HOT</span></div>
+    <ul class="cl">
+      <li>NEVER brake and swerve simultaneously — causes loss of control</li>
+      <li>Correct sequence: brake FIRST while upright → release brakes → swerve → reapply brakes after straightening</li>
+      <li>Keep feet on foot pegs during emergency braking (rear brake and gear changes still needed)</li>
+      <li>To swerve RIGHT: push on the RIGHT hand grip (counter-steering)</li>
+    </ul>
+    <div class="sec-head">Locked Wheels — Exact Responses <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>Situation</th><th>Correct Action</th></tr>
+      <tr><td>Rear wheel locks on paved surface</td><td>IMMEDIATELY release the rear brake</td></tr>
+      <tr><td>Rear wheel locks on loose surface (gravel/sand)</td><td>May keep it locked — releasing could cause worse instability</td></tr>
+      <tr><td>Front wheel locks</td><td>Release hand brake lever just enough to unlock wheel, then reapply gradually</td></tr>
+      <tr><td>Braking while front wheel is turned</td><td>Apply brakes gradually with smooth threshold braking and less pressure than normal</td></tr>
+    </table></div>
+    <div class="sec-head">Weight Transfer When Braking</div>
+    <div class="fact-box"><div class="label">Physics — Exam Question</div><p>When braking, the weight of the rider and cargo shifts FORWARD, increasing braking force on the FRONT wheel. This is why the front brake provides most of the stopping power.</p></div>
+    <div class="sec-head">Specific Emergency Situations</div>
+    <div class="t-wrap"><table>
+      <tr><th>Emergency</th><th>What To Do</th></tr>
+      <tr><td>Throttle stuck open</td><td>Squeeze CLUTCH lever AND use ENGINE KILL SWITCH simultaneously</td></tr>
+      <tr><td>ABS-equipped motorcycle</td><td>Apply firm continuous pressure — do NOT pump the brakes. Practice to get the feel.</td></tr>
+      <tr><td>Unavoidable object in path</td><td>Ease off throttle and threshold brake BEFORE reaching it, shift weight back, stand slightly on pegs, grip firmly with relaxed arms</td></tr>
+      <tr><td>After riding over hard object</td><td>Pull over when safe, stop, inspect tires and rims for damage</td></tr>
+      <tr><td>Motorcycle wobble</td><td>Grip handlebars firmly, close throttle GRADUALLY to slow down, pull off road. Do NOT brake suddenly.</td></tr>
+      <tr><td>Mirror habit</td><td>Check mirrors frequently to know what is behind you for safe emergency stops</td></tr>
+    </table></div>
+    <div class="sec-head">Challenging Conditions</div>
+    <div class="t-wrap"><table>
+      <tr><th>Condition</th><th>Key Response</th></tr>
+      <tr><td>Night / low visibility</td><td>Reduce speed, increase following distance, use CLEAR eye protection only (not tinted)</td></tr>
+      <tr><td>Rain / wet roads</td><td>Greatly increases stopping distance. Brake earlier and more gently. Painted lines and metal surfaces are especially slippery when wet.</td></tr>
+      <tr><td>Gravel / loose surfaces</td><td>Slow down before entering, ride straight and steady, avoid hard braking</td></tr>
+      <tr><td>Railroad tracks</td><td>Cross at 45–90 degree angle to prevent tire from getting caught in the groove</td></tr>
+    </table></div>
+  </div>
+
+  <!-- PASSENGERS -->
+  <div class="content" id="tab-passenger">
+    <div class="sec-head">Before Adding a Passenger <span class="badge badge-new">KEY</span></div>
+    <ul class="cl">
+      <li>Only carry a passenger when you are an EXPERIENCED rider — not as a beginner</li>
+      <li>Motorcycle must have a seat designed to carry an extra person</li>
+      <li>Must have passenger hand grips AND foot rests installed</li>
+      <li>Check and adjust tire pressure for the extra weight</li>
+      <li>Adjust suspension/shock absorbers for extra weight</li>
+      <li>Check drive chain slack</li>
+      <li>Take the motorcycle OFF the side stand BEFORE the passenger mounts</li>
+    </ul>
+    <div class="sec-head">Passenger Requirements — By Law</div>
+    <ul class="cl">
+      <li>Must wear an APPROVED HELMET (legally mandatory)</li>
+      <li>Should wear full protective gear: helmet, protective clothing, proper footwear, eye protection</li>
+      <li>Feet must stay on foot pegs AT ALL TIMES — even when stopped (hot exhaust pipes and mufflers)</li>
+      <li>Must confirm with operator BEFORE getting on or off</li>
+    </ul>
+    <div class="sec-head">How a Passenger Affects Riding <span class="badge badge-hot">HOT</span></div>
+    <div class="t-wrap"><table>
+      <tr><th>Effect</th><th>Required Adjustment</th></tr>
+      <tr><td>Stopping distance increases</td><td>Reduce speed EARLIER; increase following distance to 3–4 seconds</td></tr>
+      <tr><td>Slower acceleration</td><td>Look for LARGER gaps in traffic when entering or merging</td></tr>
+      <tr><td>Extra weight in corners</td><td>Ride at slower speeds on corners, curves, and bumps</td></tr>
+      <tr><td>Braking takes longer</td><td>Brake earlier than normal in all situations</td></tr>
+    </table></div>
+    <div class="sec-head">Instructions for the Passenger</div>
+    <ul class="cl">
+      <li>Sit on the designed passenger seat ONLY — not on fuel tank, handlebars, or rear fender</li>
+      <li>Sit as far FORWARD as possible without crowding the operator</li>
+      <li>Hold operator's WAIST (recommended) or use passenger hand grips</li>
+      <li>Sit STILL — especially while manoeuvring at low speed</li>
+      <li>In turns, look over operator's shoulder in the direction of the turn</li>
+      <li>Move WITH the operator during acceleration and braking</li>
+      <li>Lean as the operator leans in turns — do NOT lean opposite</li>
+    </ul>
+    <div class="warn-box"><strong>⚠ Avoid sudden acceleration with a passenger</strong> — they can lose balance and come off the motorcycle. Warn the passenger before any quick movements (lane changes, acceleration, etc.).</div>
+    <div class="sec-head">Carrying Cargo</div>
+    <ul class="cl">
+      <li>Best method: saddle bags or tank bags designed for motorcycles</li>
+      <li>Load saddle bags with approximately equal weight on each side</li>
+      <li>Use elastic bungee cords or nets — check the load regularly during the trip</li>
+      <li>Do NOT attach cargo to handlebars or front fender</li>
+      <li>Do NOT allow a passenger to hold cargo in their hands</li>
+    </ul>
+    <div class="sec-head">First Time Carrying a Passenger</div>
+    <div class="fact-box"><div class="label">Start Here</div><p>Begin at slow speeds in a traffic-free area, then progress to light traffic before riding in normal conditions. Communication and cooperation are extremely important to reduce injury risk.</p></div>
+  </div>
+
+  <!-- Q&A BANK -->
+  <div class="content" id="tab-qbank">
+    <div class="sec-head">120 Real Exam Questions — Click to Reveal Answers</div>
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterQ('all',this)">All (120)</button>
+      <button class="filter-btn" onclick="filterQ('licensing',this)">Licensing (20)</button>
+      <button class="filter-btn" onclick="filterQ('gear',this)">Gear (15)</button>
+      <button class="filter-btn" onclick="filterQ('riding',this)">Riding (18)</button>
+      <button class="filter-btn" onclick="filterQ('traffic',this)">Traffic (15)</button>
+      <button class="filter-btn" onclick="filterQ('emergency',this)">Emergencies (13)</button>
+      <button class="filter-btn" onclick="filterQ('passenger',this)">Passengers (15)</button>
+    </div>
+    <div id="qaList"></div>
+  </div>
+</div>
+
+<!-- ===================== QUIZ MODE ===================== -->
+<div id="quizPanel">
+  <div id="quizActive">
+    <div class="quiz-header">
+      <div class="quiz-prog">Question <span id="qNum">1</span> of <span id="qTotal">120</span></div>
+      <div class="quiz-score-live" id="qScoreLive" style="color:var(--muted)">Score: 0/0</div>
+    </div>
+    <div class="quiz-body">
+      <div class="quiz-cat" id="qCat"></div>
+      <div class="quiz-q" id="qText"></div>
+      <div class="quiz-opts" id="qOpts"></div>
+      <div class="quiz-feedback" id="qFeedback">
+        <div class="fb-label" id="fbLabel"></div>
+        <div id="fbText"></div>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" onclick="skipQ()">Skip →</button>
+        <button class="btn btn-amber" id="nextBtn" onclick="nextQ()" style="display:none">Next Question →</button>
+      </div>
+    </div>
+  </div>
+  <div class="quiz-result" id="quizResult">
+    <h2>Quiz Complete!</h2>
+    <div class="result-score" id="finalScore"></div>
+    <p id="resultMsg"></p>
+    <div class="quiz-cat-scores" id="catScores"></div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px">
+      <button class="btn btn-amber" onclick="restartQuiz()">🔄 Retry Quiz</button>
+      <button class="btn btn-ghost" onclick="setMode('study')">📚 Back to Study Mode</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>Alberta Class 6 Motorcycle Exam Prep</strong><br>
+  Based on the Official Alberta Rider's Guide (2023) published by Alberta Transportation and Economic Corridors.<br>
+  This is an unofficial study resource. Always verify current rules at <strong>alberta.ca</strong>.<br>
+  The actual knowledge test is 30 questions taken at an Alberta registry agent office.
+</div>
+
+<script>
+const allQ = [
+  // LICENSING (20)
+  {cat:'licensing',q:'The Class 6 knowledge test contains:',a:'30 questions on safe riding, rules of the road, and signs',note:'30 questions total — taken on a computer at a registry agent office.'},
+  {cat:'licensing',q:'Approximately how long is the Class 6 road test?',a:'About 60 minutes',note:'3 routine stops will happen during this time regardless of errors.'},
+  {cat:'licensing',q:'If the motorcycle provided for the road test is not mechanically safe:',a:'The examiner will not do the test',note:'The examiner inspects the motorcycle before the test begins.'},
+  {cat:'licensing',q:'Where can you take the Class 6 knowledge test?',a:'At most Alberta registry agent offices',note:'Not at police stations, driving schools, or online at home.'},
+  {cat:'licensing',q:'To qualify to learn to ride a motorcycle, a person must:',a:'Be at least 16, hold a valid driver\'s licence, and have a supervisor while learning',note:'All three conditions are required simultaneously.'},
+  {cat:'licensing',q:'A supervising rider may provide supervision by:',a:'Following on another motorcycle or in a vehicle',note:'Or by being seated on the learning rider\'s motorcycle.'},
+  {cat:'licensing',q:'A learning rider with a Class 7 licence must NOT:',a:'Ride during night-time hours as defined for GDL riders',note:'Night = midnight or 1hr after sunset → 5am or 1hr before sunrise.'},
+  {cat:'licensing',q:'The Class 6 knowledge test is based on:',a:'The Rider\'s Guide and the Driver\'s Guide',note:'Both guides together contain the knowledge test material.'},
+  {cat:'licensing',q:'For the Class 6 road test, the person being tested must:',a:'Provide a motorcycle with valid insurance and registration',note:'The examiner checks the motorcycle before testing.'},
+  {cat:'licensing',q:'Before you have a Class 6 licence, your supervising rider must:',a:'Hold a valid full (non-GDL) Class 6 licence',note:'A Class 5-GDL rider CANNOT supervise a learner motorcycle rider.'},
+  {cat:'licensing',q:'A learning rider with a Class 7 licence must have:',a:'Fewer than eight demerit points',note:'At 8 or more demerit points, riding privileges are suspended.'},
+  {cat:'licensing',q:'During the Class 6 road test, you may be asked to pull over and park briefly:',a:'Three times as routine test components',note:'These three stops happen regardless of any errors made.'},
+  {cat:'licensing',q:'Under GDL probationary conditions for Class 6-GDL riders, your BAC must be:',a:'Zero — no alcohol or drugs at all while riding',note:'Not 0.05, not under the legal limit — absolute zero.'},
+  {cat:'licensing',q:'To ride a motorcycle on a public roadway without a supervising rider, you must:',a:'Hold a valid Class 6 driver\'s licence',note:'Passing the road test is the last step to get there.'},
+  {cat:'licensing',q:'For a Class 7 learning rider on a motorcycle, when must BAC be zero?',a:'While seated on or riding the motorcycle',note:'This applies even when just SEATED on the bike — not only when moving.'},
+  {cat:'licensing',q:'Before taking a Class 6 road test, the learner must:',a:'Pass the Class 6 knowledge test',note:'Knowledge test must be passed BEFORE the road test can be attempted.'},
+  {cat:'licensing',q:'A learning rider who holds a Class 5-GDL driver\'s licence:',a:'Must have zero alcohol and drug level when riding and cannot supervise another learner',note:'Class 5-GDL riders cannot supervise motorcycle learners.'},
+  {cat:'licensing',q:'After passing the Class 6 road test, what must you do to get your new licence?',a:'Go to a registry agent office and pay a fee to have your licence re-classed',note:'Passing the road test alone does NOT change your licence class.'},
+  {cat:'licensing',q:'When taking the Class 6 knowledge test, you must:',a:'Purchase a test permit for each attempt',note:'No free retests — a new permit must be purchased each time.'},
+  {cat:'licensing',q:'A driver who holds a Class 1, 2, 3, 4, or 5 licence and is learning to ride a motorcycle:',a:'Must still have a supervising Class 6 rider',note:'Any class of learner needs a supervising full Class 6 rider.'},
+
+  // GEAR (15)
+  {cat:'gear',q:'Why is motorcycle-specific clothing recommended for riders?',a:'It provides the best protection against scrapes, cuts, weather, and flying debris',note:'Denim is minimum protection only. Shorts and nylon are not recommended.'},
+  {cat:'gear',q:'When should tinted eye protection NOT be worn?',a:'At night or in poor light conditions',note:'Use a clear shield or clear goggles when light conditions are reduced.'},
+  {cat:'gear',q:'What is hyperthermia in the context of motorcycle riding?',a:'When the body overheats, especially in warm or hot weather',note:'Distinct from hypothermia (body losing heat). A proper jacket actually helps prevent it.'},
+  {cat:'gear',q:'Which type of helmet provides the best overall protection?',a:'Full coverage (full face) helmet',note:'Protects entire head including chin, face, skull base, and offers weather protection.'},
+  {cat:'gear',q:'Why are lighter-coloured helmets recommended?',a:'They are more visible to other motorists',note:'Visibility is a key safety factor for motorcycle riders at all times.'},
+  {cat:'gear',q:'What is hypothermia in the context of motorcycle riding?',a:'When the body loses heat faster than it can produce it',note:'Wind exposure causes this even in warm weather. Slows reflexes and reduces concentration.'},
+  {cat:'gear',q:'Which statement about motorcycle helmet use in Alberta is correct?',a:'Operators and passengers must both wear an approved motorcycle helmet',note:'Mandatory for ALL riders and passengers — not just the operator.'},
+  {cat:'gear',q:'Why should you avoid buying a used motorcycle helmet?',a:'It may have been in a collision or suffered internal damage that is not visible',note:'Internal structure damage cannot always be seen from the outside.'},
+  {cat:'gear',q:'What is the best eye and face protection for a motorcycle rider?',a:'A full coverage helmet with a built-in face shield',note:'A motorcycle windshield alone does NOT provide adequate face or eye protection.'},
+  {cat:'gear',q:'After which event is a helmet generally recommended to be replaced?',a:'After it has been involved in a collision',note:'Also replace if dropped with weight-bearing impact. Do not buy used helmets.'},
+  {cat:'gear',q:'What is a key limitation of three-quarter (open face) helmets?',a:'They do not protect the face and chin',note:'Many motorcycle crashes involve impact to the face and chin area.'},
+  {cat:'gear',q:'Why is riding without a jacket a bad idea in hot weather?',a:'It can increase the effects of hyperthermia and dehydration',note:'A proper jacket with venting actually REDUCES heat and dehydration risk.'},
+  {cat:'gear',q:'Why should riders use earplugs, particularly on highways?',a:'Wind noise at speed causes fatigue and permanent hearing loss — a helmet alone may not protect enough',note:'Various types of earplugs are available specifically for riding.'},
+  {cat:'gear',q:'What is one consequence of becoming chilled (hypothermia) while riding?',a:'Slowed reflexes and response time, and reduced ability to concentrate',note:'Hypothermia can happen even in warm weather due to constant wind exposure.'},
+  {cat:'gear',q:'Which action can reduce a helmet\'s effectiveness and should always be avoided?',a:'Painting it or cleaning it with solvents',note:'Never alter, paint, add non-approved stickers, or use solvents on a helmet.'},
+
+  // RIDING (18)
+  {cat:'riding',q:'How should your right hand be positioned on the throttle grip?',a:'Wrist slightly bent down, no higher than flat',note:'This position prevents accidentally applying too much throttle.'},
+  {cat:'riding',q:'Just before stopping the motorcycle, what should you do with the clutch lever?',a:'Squeeze the clutch lever all the way in',note:'This prevents the engine from stalling when you stop.'},
+  {cat:'riding',q:'What does squeezing the clutch lever do?',a:'Disengages engine power from the rear wheel',note:'Left hand controls the clutch lever. Squeeze = power disconnected.'},
+  {cat:'riding',q:'What is an important limitation of using your mirrors?',a:'You must never rely entirely on mirrors, especially when changing lanes',note:'Mirrors have blind spots — always do a shoulder check as well.'},
+  {cat:'riding',q:'Before starting the engine, what gear condition must you ensure?',a:'The motorcycle must be in neutral',note:'Never start in gear — the motorcycle could lurch forward suddenly.'},
+  {cat:'riding',q:'What is the correct arm position when holding the hand grips while riding?',a:'Arms slightly bent and relaxed — not tense or locked',note:'This allows steering without stretching or moving your shoulders.'},
+  {cat:'riding',q:'What is the correct position for your feet when the motorcycle is moving?',a:'Firmly on the foot pegs at all times',note:'Do not drag feet or rest them on the gear selector or brake pedal.'},
+  {cat:'riding',q:'What should you do with your knees while the motorcycle is in motion?',a:'Press them lightly against the motorcycle',note:'This helps maintain balance and stability while moving.'},
+  {cat:'riding',q:'When changing to a higher gear, what must you do with the throttle first?',a:'Roll the throttle back to the off position',note:'Then squeeze clutch, lift lever, release clutch with a small throttle.'},
+  {cat:'riding',q:'What is the "friction zone" on a motorcycle?',a:'The point where engine power first begins to engage as you release the clutch lever',note:'Must coordinate slow clutch release with gentle throttle for smooth starts.'},
+  {cat:'riding',q:'When approaching a curve or corner, when should you reduce speed and change gears?',a:'Before entering the curve or corner — not during',note:'Sudden braking or acceleration in a curve reduces traction and can cause a skid.'},
+  {cat:'riding',q:'Where should new riders practice basic skills like starting and stopping?',a:'In a safe, traffic-free area',note:'Practice turning and lane changing there too before going on public roads.'},
+  {cat:'riding',q:'When upshifting, how many gears can you move at once?',a:'Only one gear at a time',note:'Unlike downshifting, upshifting must always be done one gear at a time.'},
+  {cat:'riding',q:'What may happen if the motorcycle is going too fast for the gear selected when downshifting?',a:'The rear wheel may skid',note:'Always reduce speed to match the gear before releasing the clutch.'},
+  {cat:'riding',q:'Why should you avoid sudden acceleration or braking while in a curve?',a:'It affects balance and can cause the wheel to spin or skid',note:'Complete all speed and gear changes BEFORE entering the curve.'},
+  {cat:'riding',q:'To initiate a controlled swerve to the RIGHT, what do you do?',a:'Push on the RIGHT hand grip',note:'This is counter-steering — push right to go right. Standard motorcycle physics.'},
+  {cat:'riding',q:'Where should you focus your eyes while riding a motorcycle?',a:'Well ahead in the direction you want to go',note:'Do NOT look down at the controls, instruments, or front wheel.'},
+  {cat:'riding',q:'How should you adjust your mirrors before riding?',a:'So you can see the lane behind and as much as possible of the adjacent lanes',note:'Properly adjusted mirror shows the edge of your arm or shoulder.'},
+
+  // TRAFFIC (15)
+  {cat:'traffic',q:'Under ideal conditions, how far behind another vehicle should you stay?',a:'At least two to three seconds',note:'Increase to 3–4 seconds in poor conditions or when carrying a passenger.'},
+  {cat:'traffic',q:'What are blind spots?',a:'Areas beside and behind a vehicle that are not visible in the mirrors',note:'If you cannot see the driver in their mirror, they likely cannot see you.'},
+  {cat:'traffic',q:'On a two-lane roadway (one lane each direction), where is it usually safest to ride?',a:'In the left portion of your lane (left wheel track)',note:'More visible to oncoming traffic and farther from right-side hazards.'},
+  {cat:'traffic',q:'Why should you usually avoid riding in the centre of the lane?',a:'It can be slippery and is often higher due to oil, grease, and debris from vehicles',note:'The centre accumulates hazardous residue from traffic.'},
+  {cat:'traffic',q:'What is the safest action when approaching a large vehicle that is turning right?',a:'Stay well back until it has completely finished the turn',note:'NEVER ride between the large vehicle and the curb.'},
+  {cat:'traffic',q:'Which sequence best describes a safe lane change?',a:'Check it is safe/legal, check ahead and mirrors, shoulder check, signal, shoulder check again, then move',note:'The double shoulder check is essential — always verify blind spots.'},
+  {cat:'traffic',q:'What is a "space cushion" in riding?',a:'The distance between yourself and all other road users around you',note:'Fully controlled by YOU. Gives time and space to react to hazards.'},
+  {cat:'traffic',q:'If a vehicle behind you is following too closely, what should you do?',a:'Reduce your speed slightly to let it pass and increase your own forward following distance',note:'Do not brake suddenly, weave, or accelerate to escape.'},
+  {cat:'traffic',q:'Why should you stay in the left portion of your lane when passing parked vehicles?',a:'To manage risks from doors opening or pedestrians stepping out from between cars',note:'The door zone is a serious hazard for motorcycle riders.'},
+  {cat:'traffic',q:'What is the recommended approach to changing lanes on a motorcycle?',a:'Plan ahead to minimize lane changes and change only when necessary',note:'Every lane change is an opportunity for a collision.'},
+  {cat:'traffic',q:'Before the crest of a hill on a two-lane road, where should you position yourself?',a:'In the right portion of your lane',note:'An oncoming vehicle may be passing and crossing into your lane over the crest.'},
+  {cat:'traffic',q:'Why is it unsafe and illegal to ride beside another motorcycle in the same lane?',a:'You have fewer escape route options and less space cushion',note:'Two motorcycles must each have their own full lane.'},
+  {cat:'traffic',q:'Why must you always create a wide space around large vehicles?',a:'They have large blind spots and their size blocks your view of the road ahead',note:'If you follow too closely, the driver likely cannot see you at all.'},
+  {cat:'traffic',q:'What should you always assume about other drivers when riding?',a:'They may not see you',note:'Ride proactively and defensively — do not assume you are visible.'},
+  {cat:'traffic',q:'On the right travel lane of a multi-lane road, where should you usually position yourself?',a:'In the left portion of your lane',note:'Provides better visibility and space from the curb side.'},
+
+  // EMERGENCIES (13)
+  {cat:'emergency',q:'What is "threshold braking"?',a:'Braking to the point just before the wheels lock — maximum stopping force without losing control',note:'Use both brakes simultaneously and firmly for quickest stops.'},
+  {cat:'emergency',q:'For the quickest emergency stop when you cannot go around a hazard:',a:'Use both brakes to maximum threshold with the motorcycle upright and front wheel straight',note:'Keep the motorcycle upright for maximum braking effectiveness.'},
+  {cat:'emergency',q:'If your rear brake locks on a normal paved surface, what should you do?',a:'Immediately release the rear brake',note:'On loose surfaces like gravel or sand, you may need to keep it locked instead.'},
+  {cat:'emergency',q:'If your front wheel locks during braking, what should you do?',a:'Release the hand brake lever just enough to unlock the wheel, then reapply it gradually',note:'A locked front wheel causes immediate loss of directional control.'},
+  {cat:'emergency',q:'Why should you never brake while swerving around an object?',a:'A sudden change in braking while leaning can cause a loss of control',note:'Sequence: brake first → release → swerve → reapply brakes after straightening.'},
+  {cat:'emergency',q:'What is the first step if your throttle gets stuck open?',a:'Squeeze the clutch lever and use the engine kill switch simultaneously',note:'This cuts engine power immediately while allowing brakes to still work.'},
+  {cat:'emergency',q:'When you apply the brakes, what happens to the weight of the rider and cargo?',a:'It shifts forward, increasing braking force on the front wheel',note:'This is why the front brake provides most of the motorcycle\'s stopping power.'},
+  {cat:'emergency',q:'Why is it important not to lock the wheels while braking?',a:'Locked wheels cause loss of steering control and skidding',note:'Threshold braking maximizes stopping power while keeping wheels rolling.'},
+  {cat:'emergency',q:'On what surface may you keep a locked rear brake rather than releasing it?',a:'Loose surfaces such as sand or gravel',note:'Releasing a locked wheel on loose surfaces can cause worse instability.'},
+  {cat:'emergency',q:'If you must ride over an unavoidable object, what should you do first?',a:'Ease off the throttle and threshold brake before reaching it, then shift weight back and stand slightly on pegs',note:'After passing it safely, pull over and check tires and rims for damage.'},
+  {cat:'emergency',q:'If your motorcycle begins to wobble at speed, what should you do?',a:'Hold handgrips firmly, gradually close the throttle to slow down, pull off the road — do NOT brake suddenly',note:'Sudden braking during a wobble can cause a crash.'},
+  {cat:'emergency',q:'If you must brake while the front wheel is turned, how should you apply the brakes?',a:'Gradually, using smooth threshold braking with less pressure than normal',note:'Less pressure is needed because turning reduces available braking traction.'},
+  {cat:'emergency',q:'Why should you check your mirrors frequently while riding?',a:'To be aware of what is behind you so you can stop safely in an emergency',note:'Knowing the situation behind affects how quickly and where you can stop.'},
+
+  // PASSENGERS (15)
+  {cat:'passenger',q:'When is riding with a passenger recommended?',a:'Only after you are an experienced rider',note:'New riders should not carry passengers — the extra weight significantly changes handling.'},
+  {cat:'passenger',q:'When preparing your motorcycle for a passenger, what specific item should you check?',a:'Drive chain slack (and also tire pressure and suspension)',note:'All three need adjustment for the extra weight.'},
+  {cat:'passenger',q:'Compared to riding alone, when carrying a passenger you must:',a:'Reduce speed earlier because stopping time and distance are significantly increased',note:'Increase following distance to 3–4 seconds minimum.'},
+  {cat:'passenger',q:'The passenger must wear which of the following by law?',a:'An approved helmet',note:'Full protective gear is recommended, but only the helmet is legally mandatory.'},
+  {cat:'passenger',q:'The safest way to carry cargo on a motorcycle is:',a:'In saddle bags or tank bags specifically designed for motorcycles',note:'Never attach to handlebars or front fender, and never let a passenger hold cargo.'},
+  {cat:'passenger',q:'When carrying a passenger, your following distance should be:',a:'Increased to three to four seconds',note:'Extra weight means significantly longer stopping distances.'},
+  {cat:'passenger',q:'With a passenger on board, how should you adjust your riding?',a:'Operate at slower speeds, particularly on corners, curves, and bumps',note:'Extra weight greatly affects cornering ability and stopping.'},
+  {cat:'passenger',q:'In addition to a suitable passenger seat, the motorcycle must also have:',a:'Passenger hand grips and foot rests',note:'Both are required equipment to legally carry a passenger.'},
+  {cat:'passenger',q:'Why must a passenger\'s feet stay on the foot pegs even when stopped?',a:'To avoid contact with hot exhaust pipes and mufflers, which can cause severe burns',note:'This applies even at brief stops — the exhaust remains very hot.'},
+  {cat:'passenger',q:'Due to the extra weight of a passenger, when entering or merging with traffic you should:',a:'Look for larger gaps in traffic because acceleration is slower',note:'You cannot accelerate as quickly with extra weight on board.'},
+  {cat:'passenger',q:'When loading saddle bags, how should the weight be distributed?',a:'With approximately equal weight on each side',note:'Unequal weight causes handling problems and affects balance.'},
+  {cat:'passenger',q:'Before getting on or off the motorcycle, the passenger should:',a:'Always check with the operator first',note:'Unexpected movement could cause the operator to lose balance and drop the bike.'},
+  {cat:'passenger',q:'A passenger is legally permitted on a motorcycle only if the motorcycle:',a:'Has a seat specifically designed to carry an extra person',note:'Also needs hand grips and foot pegs for the passenger.'},
+  {cat:'passenger',q:'When carrying a passenger for the very first time, where should you start?',a:'At slow speeds in a traffic-free area, then gradually progress to light traffic',note:'Communication and cooperation between operator and passenger are critical.'},
+  {cat:'passenger',q:'Why should you avoid sudden acceleration when carrying a passenger?',a:'The passenger can lose balance and possibly come off the motorcycle',note:'Warn the passenger before any sudden movements — lane changes, acceleration, etc.'},
+];
+
+// ---- Q&A BANK ----
+function renderQA(filter) {
+  const list = document.getElementById('qaList');
+  const qs = filter === 'all' ? allQ : allQ.filter(q => q.cat === filter);
+  list.innerHTML = qs.map(q => `
+    <div class="qa" onclick="this.classList.toggle('open')">
+      <div class="qa-q"><span>${q.q}</span><span class="qa-arrow">▶</span></div>
+      <div class="qa-a">
+        <div class="ans">${q.a}</div>
+        ${q.note ? `<div class="note">💡 ${q.note}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterQ(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderQA(cat);
+}
+
+renderQA('all');
+
+// ---- TABS ----
+function showTab(id, el) {
+  document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ---- MODE TOGGLE ----
+function setMode(mode) {
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  if (mode === 'study') {
+    document.querySelectorAll('.mode-btn')[0].classList.add('active');
+    document.getElementById('studyPanel').style.display = '';
+    document.getElementById('quizPanel').style.display = 'none';
+  } else {
+    document.querySelectorAll('.mode-btn')[1].classList.add('active');
+    document.getElementById('studyPanel').style.display = 'none';
+    document.getElementById('quizPanel').style.display = '';
+    startQuiz();
+  }
+}
+
+// ---- QUIZ ----
+let shuffled = [], qIndex = 0, score = 0, answered = 0, catResults = {};
+
+function shuffle(arr) { return [...arr].sort(() => Math.random() - 0.5); }
+
+function startQuiz() {
+  shuffled = shuffle(allQ);
+  qIndex = 0; score = 0; answered = 0;
+  catResults = {};
+  ['licensing','gear','riding','traffic','emergency','passenger'].forEach(c => {
+    catResults[c] = {right:0, total:0};
+  });
+  document.getElementById('quizResult').style.display = 'none';
+  document.getElementById('quizActive').style.display = '';
+  document.getElementById('qTotal').textContent = shuffled.length;
+  renderQ();
+}
+
+function renderQ() {
+  const q = shuffled[qIndex];
+  document.getElementById('qNum').textContent = qIndex + 1;
+  const catLabels = {
+    licensing:'🪪 LICENSING & LEARNING',
+    gear:'🪖 GEAR & SAFETY',
+    riding:'🏍️ RIDING BASICS',
+    traffic:'🛣️ MANAGING TRAFFIC',
+    emergency:'🚨 EMERGENCIES',
+    passenger:'👥 PASSENGERS & CARGO'
+  };
+  document.getElementById('qCat').textContent = catLabels[q.cat] || q.cat.toUpperCase();
+  document.getElementById('qText').textContent = q.q;
+  
+  // Build 4 options: correct + 3 random wrong answers from other questions
+  const wrong = shuffle(allQ.filter(x => x.a !== q.a && x.cat === q.cat)).slice(0,2);
+  const wrongOther = shuffle(allQ.filter(x => x.a !== q.a && x.cat !== q.cat)).slice(0, Math.max(0, 3 - wrong.length));
+  const distractors = shuffle([...wrong, ...wrongOther]).slice(0,3).map(x => x.a);
+  const opts = shuffle([q.a, ...distractors]);
+  
+  const safeA = q.a.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+  document.getElementById('qOpts').innerHTML = opts.map(o => {
+    const safeO = o.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    return `<button class="opt" onclick="selectOpt(this,'${safeO}','${safeA}')">${o}</button>`;
+  }).join('');
+  
+  document.getElementById('qFeedback').style.display = 'none';
+  document.getElementById('nextBtn').style.display = 'none';
+  updateScoreLive();
+}
+
+function selectOpt(el, chosen, correct) {
+  if (el.classList.contains('disabled')) return;
+  document.querySelectorAll('.opt').forEach(o => o.classList.add('disabled'));
+  
+  const isRight = chosen === correct;
+  const q = shuffled[qIndex];
+  answered++;
+  catResults[q.cat].total++;
+  
+  if (isRight) {
+    el.classList.add('correct');
+    score++;
+    catResults[q.cat].right++;
+  } else {
+    el.classList.add('wrong');
+    document.querySelectorAll('.opt').forEach(o => {
+      if (o.textContent.trim() === correct) o.classList.add('reveal');
+    });
+  }
+  
+  const fb = document.getElementById('qFeedback');
+  fb.className = 'quiz-feedback ' + (isRight ? 'correct' : 'wrong');
+  fb.style.display = 'block';
+  document.getElementById('fbLabel').textContent = isRight ? '✓ Correct!' : '✗ Incorrect';
+  document.getElementById('fbText').textContent = q.note || (isRight ? 'Well done!' : 'Correct answer shown above in green.');
+  document.getElementById('nextBtn').style.display = '';
+  updateScoreLive();
+}
+
+function updateScoreLive() {
+  const el = document.getElementById('qScoreLive');
+  const pct = answered > 0 ? Math.round(score/answered*100) : 0;
+  el.textContent = `${score}/${answered} (${pct}%)`;
+  el.style.color = pct >= 80 ? 'var(--pass)' : pct >= 60 ? 'var(--amber)' : 'var(--fail)';
+}
+
+function nextQ() {
+  qIndex++;
+  if (qIndex >= shuffled.length) { showResult(); return; }
+  renderQ();
+}
+
+function skipQ() {
+  qIndex++;
+  if (qIndex >= shuffled.length) { showResult(); return; }
+  renderQ();
+}
+
+function showResult() {
+  document.getElementById('quizActive').style.display = 'none';
+  const res = document.getElementById('quizResult');
+  res.style.display = 'block';
+  const pct = answered > 0 ? Math.round(score/answered*100) : 0;
+  const scoreEl = document.getElementById('finalScore');
+  scoreEl.textContent = `${score}/${answered} — ${pct}%`;
+  scoreEl.style.color = pct >= 80 ? 'var(--pass)' : pct >= 60 ? 'var(--amber)' : 'var(--fail)';
+  
+  let msg = '';
+  if (pct >= 90) msg = '🏍️ Excellent! You\'re well-prepared for the real exam!';
+  else if (pct >= 80) msg = '✅ Great work — you\'re likely ready. Review any missed topics before test day.';
+  else if (pct >= 60) msg = '⚠️ Getting there — review your weak categories below and retry.';
+  else msg = '📚 Keep studying — focus on the categories with low scores below and retake the quiz.';
+  document.getElementById('resultMsg').textContent = msg;
+  
+  const catNames = {
+    licensing:'🪪 Licensing',gear:'🪖 Gear & Safety',
+    riding:'🏍️ Riding',traffic:'🛣️ Traffic',
+    emergency:'🚨 Emergencies',passenger:'👥 Passengers'
+  };
+  document.getElementById('catScores').innerHTML = Object.entries(catResults)
+    .filter(([,v]) => v.total > 0)
+    .map(([k,v]) => {
+      const p = Math.round(v.right/v.total*100);
+      const c = p>=80?'var(--pass)':p>=60?'var(--amber)':'var(--fail)';
+      return `<div class="cat-score-card">
+        <div class="cs-name">${catNames[k]||k}</div>
+        <div class="cs-val" style="color:${c}">${v.right}/${v.total} &nbsp;(${p}%)</div>
+      </div>`;
+    }).join('');
+}
+
+function restartQuiz() {
+  document.getElementById('quizResult').style.display = 'none';
+  document.getElementById('quizActive').style.display = '';
+  startQuiz();
+}
+</script>
+</body>
+</html>
